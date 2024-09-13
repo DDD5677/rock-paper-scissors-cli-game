@@ -1,0 +1,17 @@
+{
+   "name": "task-3",
+   "version": "1.0.0",
+   "main": "index.js",
+   "scripts": {
+      "start": "node main.js",
+      "dev": "nodemon main.js STONE SPOCK PAPER LIZARD SCISSORS"
+   },
+   "keywords": [],
+   "author": "",
+   "license": "ISC",
+   "description": "",
+   "dependencies": {
+      "ascii-table": "^0.0.9",
+      "readline-sync": "^1.4.10"
+   }
+}
