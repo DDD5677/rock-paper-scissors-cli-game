@@ -3,17 +3,31 @@ const crypto = require("node:crypto");
 const { check } = require("./helpers/check");
 const { createTable } = require("./helpers/table");
 const { log, chalk } = require("./helpers/log");
+const { hasDublicate } = require("./helpers/hasDublicate");
 
 const variants = process.argv.slice(2);
 if (!variants.length) {
-   log("Please enter moves also. e.g. node main.js move1 move2 move3\n", "red");
+   log(
+      "Please enter moves without repetitions. e.g. node main.js move1 move2 move3\n",
+      "red"
+   );
    return;
 }
-if (!(variants.length % 2)) {
-   log("Count of variants should be odd\n", "red");
+if (!(variants.length % 2) || variants.length == 1) {
+   log(
+      "Count of variants should be odd and greater than or equal to 3 \n",
+      "red"
+   );
    return;
 }
 
+if (hasDublicate(variants)) {
+   log(
+      "Please enter moves without repetitions. e.g. node main.js move1 move2 move3\n",
+      "red"
+   );
+   return;
+}
 let help = variants.reduce((a, move, index) => {
    a += `${index + 1} - ${move}\n`;
    return a;
